@@ -1,0 +1,25 @@
+---
+title: 'R Base Code Assignment # 3'
+author: "Amanda Mae Woodward"
+date: "2022-10-06"
+output: html_document
+---
+
+1. Open the tidyverse library.
+library(tidyverse)
+3. open the billboard dataset
+data(billboard)
+view(billboard)
+5. Create a function that can be used to determine if Britney Spears sang the song. 
+britneyornot<-function(thing){
+  ifelse(thing==Britney Spears, "sang", "did not sing")
+}
+7. Test your function on the billboard data. Save the results to a new column called "wasItBritney"
+britneyornot(billboard$artist)
+billboard$wasItBritney<-britneyornot(billboard$artist)
+9. Use a for loop to determine if a song placed 50 or below or placed above 50 during the first week. 
+for (i in 1:nrow(billboard))(if(billboard$wk1[i]<= 50) {print("below")}else(print("above"))}
+11. Use an if else statement to determine the same information as you obtained with the for loop. 
+ifelse(billboard$wk1<= 50, "below", "above")
+13. Compare your results. 
+It appears that the results are completely the same as the code chunks printed out the same result for the most part, only main thing is how they appear on the console after each code is printed.
