@@ -5,62 +5,40 @@ date: "`9/30/2022`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
---
----
-title: "Base R- Weekly Assignment #1"
-author: "Amanda Mae Woodward"
-date: "2022-09-28"
-output: html_document
----
-
----
-title: "Base R- Weekly Assignment #1"
-author: "Amanda Mae Woodward"
-date: "2022-09-28"
-output: html_document
----
+#deleted the extra parts 
 
 1. Name the four panels in R Studio and offer a brief description of each.
  "Source-Create and edit R scripts, contains all of individual R scripts", "Console-Calculation of R, code is evaluated here", "Enviornment/History-Shows objects defined in workspace, data objects (vectors,matrices,dataframes)","Files/Plots/Packages/Help-access to files directory, plots shows all the plots made, rpackages installed and whether they are loaded or not, help menu for R functions"
+#√
 2. Create a code chunk. Write your favorite number in it. 
 c(2,3,5,7)
 [1] 2 3 5 7
+# this isn't a code chunk. here's a sample code chunk:
+```{r}
+
+```
+
 3. Add thirty-seven to six
+```{r}
 37+6
+```
 [1] 43
+#don't need to copy the answers - i'll see them when I run your code in R on my computer
+
 4. evaluate the following: six times four is equal to twenty-four
 6*4==24[1] TRUE
 [1] TRUE
+#√
 5. What's the difference between an "and" and an "or" statement? 
 "And evaluates both conditons to be true, or evaluates one condition must be true" "& for and and |for or"
+#√
 6. Create an "and" statement for the following sentence: three is less than five and tree is the same as oak. 
 3<5 & "tree"=="oak"
 [1] FALSE
+#√
 7. Create a variable called "dinner" that contains your favorite thing to eat for dinner. 
 FavoriteDinnerFood<-c("mac and cheese")
+#√
 8. write out all numbers between 50 and 200
  seq(50,200)
   [1]  50  51  52  53  54  55  56  57  58  59  60  61
@@ -76,6 +54,7 @@ FavoriteDinnerFood<-c("mac and cheese")
 [121] 170 171 172 173 174 175 176 177 178 179 180 181
 [133] 182 183 184 185 186 187 188 189 190 191 192 193
 [145] 194 195 196 197 198 199 200
+#√
 9. print every odd number between 1 and 300. 
 seq(1,300,2)
    [1]   1   3   5   7   9  11  13  15  17  19  21  23
@@ -91,9 +70,11 @@ seq(1,300,2)
 [121] 241 243 245 247 249 251 253 255 257 259 261 263
 [133] 265 267 269 271 273 275 277 279 281 283 285 287
 [145] 289 291 293 295 297 299
+#√
 10. repeat the phrase "i'm excited for fall" five times
 rep("i'm excited for fall",5)
 [1] "i'm excited for fall" "i'm excited for fall"
 [3] "i'm excited for fall" "i'm excited for fall"
 [5] "i'm excited for fall"
-savehistory("~/Stats/JW-RStudio.Rhistory")
+
+#√
