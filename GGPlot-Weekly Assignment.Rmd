@@ -1,0 +1,97 @@
+---
+title: "Untitled"
+author: "Jenna Windhorst"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+---
+title: "PSY4960- ggplot assignment"
+author: "Jenna Windhorst"
+date: "2022-10-29"
+output: html_document
+---
+
+1. Open the starwars dataset from tidyverse
+```{r}
+library(tidyverse)
+data("starwars")
+```
+2.Create a graph of character's eye color. (Hint: pay attention to the class of data)
+```{r}
+library(dbplyr)
+e=starwars %>% group_by(eye_color) %>% summarize(num=n())
+ggplot(e, aes(x=eye_color,y=num,fill=eye_color))+geom_col()
+```
+
+3. Customize your graph to make it more presentable (consider axes, colors, themes)
+```{r}
+e=starwars %>% group_by(eye_color) %>% summarize(num=n())
+ggplot(e, aes(x=eye_color, y=num, fill=eye_color))+geom_point(color="skyblue")
+```
+4. Create a graph of character's height versus mass.
+```{r}
+ggplot(starwars, aes(height, mass))+geom_point()
+```
+5. Customize this graph to make it more presentable.
+```{r}
+ggplot(starwars, aes(height, mass))+geom_point(color="006699")
+```
+6. Create another graph of character's height and mass. Include sex as a third variable.
+```{r}
+ggplot(starwars, aes(height, mass, color=sex))+geom_point()
+```
+7. Customize this graph to make it more presentable. 
+```{r}
+library(RColorBrewer)
+library(viridis)
+ggplot(starwars, aes(height, mass, color=sex))+geom_point()+scale_color_viridis(discrete= TRUE, option="c")
+```
+8. Make a boxplot of height. 
+```{r}
+ggplot(starwars, aes(height))+geom_boxplot()
+```
+9. Make a boxplot of height for each species present in the data
+```{r}
+ggplot(starwars, aes(species, height))+geom_boxplot()
+```
+10. Using any variables in the starwars dataset, create a graph that uses a color palette from viridis.
+```{r}
+library(viridis)
+ggplot(starwars, aes(height, mass, color=as.factor(birth_year)))+geom_point()+scale_color_viridis(discrete=TRUE, option="D")
+
+```
+11.Using any variables in the starwars dataset, create a graph that uses a color palette from RColorBrewer.
+```{r}
+library(RColorBrewer)
+ggplot(starwars, aes(height, mass, color=as.factor(skin_color)))+geom_point()+scale_color_brewer(type="seq",1,1, aesthetics = "skyblue")
+```
+12. Using any variables in the starwars dataset, create a graph using facet_wrap
+```{r}
+ggplot(starwars, aes(height, sex))+geom_point()+facet_wrap(~species)
+
+```
