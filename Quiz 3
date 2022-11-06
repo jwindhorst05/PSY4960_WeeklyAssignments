@@ -1,0 +1,59 @@
+---
+title: "Quiz 3"
+author: "Jenna Windhorst"
+date: "2022-11-4"
+output: html_document
+---
+``` 
+1. Load the Spotify Dataset (on Canvas)
+```{r}
+spotifyDat <- read.csv("C:/Users/jenna/Downloads/spotifyDat.csv")
+View(spotifyDat)
+```
+2. Create a bar graph of the artist column (Hint: use theme(axis.text.x = element_text(angle = 90)) to rotate the x axis).
+```{r}
+ggplot(spotifyDat, aes(artist))+geom_bar()+theme(axis.text.x = element_text(angle = 90))
+```
+3. Add genre as a third variable in your graph.
+```{r}
+ggplot(spotifyDat, aes(artist)+geom_bar()+xlab("genre")+ ylab("frequency")+theme(axis.text.x = element_text(angle = 90))
+ggplot(spotifyDat, aes(artist))+geom_bar(position= position_dodge())
+```
+4. Use color brewer to add color to your graph in 3.
+```{r}
+library(RColorBrewer)
+ggplot(spotifyDat, aes(artist)+geom_bar()+xlab("genre")+ ylab("frequency")+theme(axis.text.x = element_text(angle = 90))
+ggplot(spotifyDat, aes(artist))+geom_bar(position= position_dodge())+scale_colour_brewer("RdGy")
+```
+5. Place the legend for the graph you made in 3 on the bottom of the graph. 
+```{r}
+ggplot(spotifyDat, aes(artist)+geom_bar()+xlab("genre")+ ylab("frequency")+theme(legend.position = "bottom")
+ggplot(spotifyDat, aes(artist))+geom_bar(position= position_dodge())+scale_colour_brewer("RdGy")
+```
+6. Separate the genre column into multiple columns (e.g. so each genre listed is in a unique column)
+```{r}
+mydat<- separate(spotifyDat, genre, into=c("genre"), sep=",")
+```
+7.use facet wrap to make graphs of artist by genre 
+```{r}
+ggplot(spotifyDat, aes(artist))+geom_bar()+theme(axis.text.x = element_text(angle=90))+theme(legend.position = "bottom")+facet_wrap(~genre)
+```
+8. Create a graph that includes the variables tempo and dancability. 
+```{r}
+ggplot(spotifyDat, aes(tempo,danceability))+geom_point()
+```
+9. Add popularity as a third variable. 
+```{r}
+ggplot(spotifyDat, aes(tempo, danceability, color= as.factor(popularity))) + geom_point()
+```
+10. Use viridis as a color in your graph from #8 
+```{r}
+library(viridis)
+ggplot(spotifyDat, aes(tempo,danceability))+geom_point()+scale_color_viridis(discrete = TRUE, option = "D")
+```
+
+
+
+
+
+
