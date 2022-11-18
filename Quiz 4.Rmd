@@ -1,0 +1,53 @@
+1. open the mtcars dataset.
+```{r}
+data("mtcars")
+View(mtcars)
+```
+2. Find the correlation between mpg and hp.
+```{r}
+cor(mtcars$mpg,mtcars$hp)
+cor.test(mtcars$mpg,mtcars$hp)
+```
+3. Create a scatterplot that matches your statistic in #2. 
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(mpg, hp)) + geom_point()+ geom_smooth(method="lm")
+```
+4. Find the correlation between am and mpg. Explain why you chose to use your specific function
+```{r}
+library("ltm")
+biserial.cor(mtcars$mpg,mtcars$am)
+```
+5. Run a regression to predict mpg from disp.
+```{r}
+lm(mpg~disp,data=mtcars)
+lmmtcars<-lm(mpg~disp,data=mtcars)
+```
+6. Create a graph that displays your regression line. 
+```{r}
+lmmtcars<-lm(mpg~disp,data=mtcars)
+plot(lmmtcars)
+```
+7. Run a t test to compare the horse power of automatic and manual transmission cars. 
+```{r}
+
+```
+8. Create a graph that accompanies your statistic in #6.
+```{r}
+
+```
+9. Run an ANOVA to predict disp from gear. 
+```{r}
+lm(disp~gear,data=mtcars)
+lmdg<-lm(disp~gear,data=mtcars)
+summary(lmdg)
+anova(lmdg)
+```
+10. You have a multiple choice test that is 25 questions with 5 potential options. What type of test can you run to determine if your score of 16/25 differs from chance? 
+```{r}
+binom.test(16,25, p=.20)
+```
+11. Run the test you described in #10
+```{r}
+binom.test(16,25, p=.20)
+```
