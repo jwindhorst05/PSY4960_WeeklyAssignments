@@ -15,6 +15,7 @@ ggplot(mtcars, aes(mpg, hp)) + geom_point()+ geom_smooth(method="lm")
 ```
 4. Find the correlation between am and mpg. Explain why you chose to use your specific function
 ```{r}
+install.packages("ltm")
 library("ltm")
 biserial.cor(mtcars$mpg,mtcars$am)
 ```
@@ -30,11 +31,16 @@ plot(lmmtcars)
 ```
 7. Run a t test to compare the horse power of automatic and manual transmission cars. 
 ```{r}
-
+mtcars$am2<-ifelse(mtcars$am == 0, "automatic", "manual")
+mtcars %>% select(am, am2)
+mtcars$am2<- as.factor(mtcars$am2)
+levels(mtcars$am)
+t.test(mtcars$hp ~ mtcars$am2, var.equal=TRUE)
 ```
 8. Create a graph that accompanies your statistic in #6.
 ```{r}
-
+library(ggplot2)
+ggplot(mtcars, aes(hp, am2)) + geom_point()+ geom_smooth(method="lm")
 ```
 9. Run an ANOVA to predict disp from gear. 
 ```{r}
