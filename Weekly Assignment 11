@@ -1,0 +1,73 @@
+Open the diamonds dataset.
+ ```{r}
+data(diamonds) 
+view(diamonds)
+```
+Create a boxplot for price for the different carats
+```{r}
+ggplot(ChickWeight, aes(price, carat))+ geom_line()
+```
+Run a correlation test between cut and price
+```{r}
+cor.test(diamonds$price,diamonds$cut)
+```
+Change all of the column names in the diamonds dataset to capital letters 
+```{r}
+data(diamonds)
+colnames(diamonds)<-tolower(colnames(diamonds))
+colnames(diamonds)
+```
+Create a new column in the diamonds data set that indicates whether a diamond is expensive (over $1000) or not (under $1000).  
+```{r}
+diamonds$expensivedia<-NA
+for(diamonds in 1:nrow(diamonds)){ if(diamonds$price[diamonds]>=1000){diamonds$expensivedia[diamonds]<-”no”}
+else{diamonds$expensivedia[diamonds]<- "no"}
+```
+Error
+Line 8 there is an error because I wrote geom_line() which would give a line graph instead of a boxplot by using boxplot function.
+The correlation test is wrong in line 12 because I used cor.test even though cut is categorical so biserial test must be used instead.
+Line 17 is wrong because I wrote tolower instead of toupper so the letters would be lowercase not uppercase.
+Line 23 is wrong because it should say yes instead of no otherwise the results will be swapped and incorrect. Also in line 24 there should be an extra bracket placed at the end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
