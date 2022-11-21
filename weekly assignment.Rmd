@@ -1,0 +1,47 @@
+1. Open the diamonds dataset from ggplot2.  
+```{r}
+library(ggplot2)
+data("diamonds")
+View(diamonds)
+```
+
+2. Run a correlation between the x and y variables. What do you notice? 
+```{r}
+cor(diamonds$x, diamonds$y)
+cor.test(diamonds$x, diamonds$y)
+ggplot(diamonds, aes(x, y)) + geom_point()+ geom_smooth(method="lm")
+```
+3. What is the correlation between price and carat?
+```{r}
+cor(diamonds$price, diamonds$carat)
+```
+4. Create a linear model predicting price from table. What is the coefficient for table? 
+```{r}
+lmprice.table<-lm(price~table, data=diamonds)
+(summary(lmprice.table))
+
+```
+5. Run a regression and an Anova predicting price from color. What do you notice about the two types of output? 
+```{r}
+lm(price~color,data=diamonds)
+lmOne<-lm(price~color,data=diamonds)
+summary(lmOne)
+anova(lmOne)
+
+```
+6. Run a t test to determine if "D" color diamonds are more expensive than "E" color diamonds. 
+```{r}
+```
+7. Open the warpbreaks dataset. What test would you use to determine the correlation between wool type and breaks?
+```{r}
+data("warpbreaks")
+
+```
+8. What is the correlation between wool type and breaks? 
+```{r}
+
+```
+9. A student has a 35 question, multiple choice test. Each question has 4 choices. If they answered 17 questions correctly, did their responses differ from chance?  
+```{r}
+binom.test(17, 35, p=.25)
+```
