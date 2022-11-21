@@ -31,6 +31,8 @@ anova(lmOne)
 ```
 6. Run a t test to determine if "D" color diamonds are more expensive than "E" color diamonds. 
 ```{r}
+ColorPrice<- diamonds %>% select(price, color)
+t.test(ColorPrice$color=="D"~ColorPrice$color=="E",var.equal = TRUE, alternative="greater" )
 ```
 7. Open the warpbreaks dataset. What test would you use to determine the correlation between wool type and breaks?
 ```{r}
@@ -39,7 +41,9 @@ data("warpbreaks")
 ```
 8. What is the correlation between wool type and breaks? 
 ```{r}
-
+install.packages("ltm")
+library("ltm")
+biserial.cor(warpbreaks$breaks,warpbreaks$wool)
 ```
 9. A student has a 35 question, multiple choice test. Each question has 4 choices. If they answered 17 questions correctly, did their responses differ from chance?  
 ```{r}
