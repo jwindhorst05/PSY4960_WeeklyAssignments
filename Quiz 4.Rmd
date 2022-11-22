@@ -18,6 +18,7 @@ ggplot(mtcars, aes(mpg, hp)) + geom_point()+ geom_smooth(method="lm")
 install.packages("ltm")
 library("ltm")
 biserial.cor(mtcars$mpg,mtcars$am)
+Am is a categorical vairbale and mpg is numerical which is when biserial.cor test is used, a regular cor.test/cor function would not be appropriate since it is used for only numerical variables.
 ```
 5. Run a regression to predict mpg from disp.
 ```{r}
@@ -51,7 +52,7 @@ anova(lmdg)
 ```
 10. You have a multiple choice test that is 25 questions with 5 potential options. What type of test can you run to determine if your score of 16/25 differs from chance? 
 ```{r}
-binom.test(16,25, p=.20)
+binom.test can be used
 ```
 11. Run the test you described in #10
 ```{r}
