@@ -10,16 +10,18 @@ View(diamonds)
 cor(diamonds$x, diamonds$y)
 cor.test(diamonds$x, diamonds$y)
 ggplot(diamonds, aes(x, y)) + geom_point()+ geom_smooth(method="lm")
+There is a strong positive correlation between the x and y variables because the correlation r is .9747
 ```
 3. What is the correlation between price and carat?
 ```{r}
 cor(diamonds$price, diamonds$carat)
+[1] 0.9215
 ```
 4. Create a linear model predicting price from table. What is the coefficient for table? 
 ```{r}
 lmprice.table<-lm(price~table, data=diamonds)
 (summary(lmprice.table))
-
+226.984
 ```
 5. Run a regression and an Anova predicting price from color. What do you notice about the two types of output? 
 ```{r}
@@ -27,23 +29,25 @@ lm(price~color,data=diamonds)
 lmOne<-lm(price~color,data=diamonds)
 summary(lmOne)
 anova(lmOne)
-
+There shows different output compared in each test. Regression shows the different values within the color types. Anova shows values such as mean sq, f value, sum sq. Anova ia more detailed.
 ```
 6. Run a t test to determine if "D" color diamonds are more expensive than "E" color diamonds. 
 ```{r}
 ColorPrice<- diamonds %>% select(price, color)
 t.test(ColorPrice$color=="D"~ColorPrice$color=="E",var.equal = TRUE, alternative="greater" )
+No E is greater
 ```
 7. Open the warpbreaks dataset. What test would you use to determine the correlation between wool type and breaks?
 ```{r}
 data("warpbreaks")
-
+Biserial.cor () because it examines correlation between a cateogorial variable and numerical.
 ```
 8. What is the correlation between wool type and breaks? 
 ```{r}
 install.packages("ltm")
 library("ltm")
 biserial.cor(warpbreaks$breaks,warpbreaks$wool)
+0.220933
 ```
 9. A student has a 35 question, multiple choice test. Each question has 4 choices. If they answered 17 questions correctly, did their responses differ from chance?  
 ```{r}
