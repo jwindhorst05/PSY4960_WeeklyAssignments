@@ -47,40 +47,47 @@ People are assigned to either complete a cognitive training task (to improve mem
 
 Upload the psy4960-Quiz2.csv file.
 ```{r}
-
+view(`PSY4960.Quiz2.(1)`)
 ```
 
 1. Take a summary of the full dataset.
 ```{r}
-
+summary(`PSY4960.Quiz2.(1)`)
 ```
 
 2. What kind of data do you have (wide or long?). How do you know?
 ```{r}
-
+This data is wide because there is one subject per row and the subjects are not repeated. It goes down the data set numerically and lists the different factors by each subject. This relates to wide data format.
 ```
 3. Check the type of data presented in the condition column. Make sure this variable is a factor
 ```{r}
-
+class(`PSY4960.Quiz2.(1)`$condition)
+as.factor(`PSY4960.Quiz2.(1)`$condition)
 ```
 
 4. Create a new column called Stroop Accuracy.
 Label those who have a higher than average score at t1 "high EF", those below average "low EF" and those at average "Average EF" (Note: EF stands for executive function). 
 ```{r}
-
+mean(`PSY4960.Quiz2.(1)`$t1_stroop)
+`PSY4960.Quiz2.(1)`$StroopAccuracy<- NA
+`PSY4960.Quiz2.(1)`$StroopAccuracy[`PSY4960.Quiz2.(1)`$t1_stroop<16.61]<-"low EF"
+`PSY4960.Quiz2.(1)`$StroopAccuracy[`PSY4960.Quiz2.(1)`$t1_stroop>16.61]<-"high EF"
+`PSY4960.Quiz2.(1)`$StroopAccuracy[`PSY4960.Quiz2.(1)`$t1_stroop==16.61]<-"average EF"
 ```
 
 5. Create a dataset containing participants' nback scores in long format. (Note: you should keep all other variables)
 ```{r}
-
-```
+library(reshape2)
+nbackLong1<- melt(`PSY4960.Quiz2.(1)`, id.vars= c("t1_ravens", "t2_ravens", "t1_stroop","t2_stroop","StroopAccuracy"), measure.vars= c("t1_nback", "t2_nback"), variable.name= "nback", value.name= "nbackscores" )
 ```
 6. Returning to the original dataset, create a column indicating the difference between the two ravens scores. 
 ```{r}
-
+print(`PSY4960.Quiz2.(1)`$t1_ravens-`PSY4960.Quiz2.(1)`$t2_ravens)
+`PSY4960.Quiz2.(1)`$diffravens<-print(`PSY4960.Quiz2.(1)`$t1_ravens-`PSY4960.Quiz2.(1)`$t2_ravens)
 ```
 
 7. Based on #6, create two subsets of data: 1 where the ravens difference score is positive and one where it is negative
 ```{r}
-
+negativediff<-subset(`PSY4960.Quiz2.(1)`,`PSY4960.Quiz2.(1)`$diffravens<0)
+positivdiff<-subset(`PSY4960.Quiz2.(1)`,`PSY4960.Quiz2.(1)`$diffravens>0)
 ```
